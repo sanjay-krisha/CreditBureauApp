@@ -7,13 +7,17 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 ssnNumber = '';
+ssnEntered = "hidden";
 
 onKey(input: any) { // without type info
   this.ssnNumber = input;
+  if(input == ""){
+    this.ssnEntered = "hidden";
+  }
 }
 
 handleClick(event: any) { 
   console.log(this.ssnNumber);
-   
+  this.ssnEntered = "inherit";
 } 
 }

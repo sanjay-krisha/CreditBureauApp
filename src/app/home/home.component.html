@@ -2,7 +2,7 @@
 <div style="position: fixed; left: 40%; top: 15%;">
     <mat-form-field  appearance="outline">
         <mat-label>SSN Number</mat-label>
-      <input matInput  #inputSssn (keyup)="onKey(inputSssn.value)">
+      <input matInput onlyNumber #inputSsn (keyup)="onKey(inputSsn.value)">
     </mat-form-field>
     <button class="button" style="vertical-align:middle; margin-left: 20px; margin-top: 25px;" (click)="handleClick($event)"><span>Enter </span></button>
 </div>
@@ -15,7 +15,14 @@
 <br/>
 
 
-<mat-tab-group>
-  <mat-tab label="First"> Content 1 </mat-tab>
-  <mat-tab label="Second"> Content 2 </mat-tab>
+<mat-tab-group tabView [style.visibility]="ssnEntered" >
+  <mat-tab label="PDF View">
+    <!-- <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+      First
+    </ng-template> -->
+  </mat-tab>
+  <mat-tab label="Details View"> 
+
+  </mat-tab>
 </mat-tab-group>

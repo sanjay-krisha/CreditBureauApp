@@ -13,12 +13,14 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'; 
 import {MatTabsModule} from '@angular/material/tabs';
+import { OnlyNumberDirective } from './only-number.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    OnlyNumberDirective
   ],
   imports: [
     BrowserModule,
