@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import { OnlyNumberDirective } from './only-number.directive';
 import {HttpClientModule } from '@angular/common/http';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatInputModule,
     MatTabsModule,
-    HttpClientModule
+    HttpClientModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

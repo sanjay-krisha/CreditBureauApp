@@ -1,6 +1,8 @@
 import { Component , OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {CreditReport} from './responseModel'
+import {CreditReport} from 'src/app/responseModel'
+import { PdfService } from 'src/app/pdf-service.service';
+declare const PDFObject: any;
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,14 @@ import {CreditReport} from './responseModel'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public constructor(private http: HttpClient){
-
+  public constructor(private http: HttpClient,
+    private pdfService: PdfService){
   }
+  src: string = ''; 
+  //variable declarations
+  ssnNumber = '';
+  ssnEntered = "hidden";
+  pdfData : any;
   public userData!: CreditReport;
 
   public ngOnInit() : void{
@@ -20,10 +27,9 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  ssnNumber = '';
-  ssnEntered = "hidden";
 
-  onKey(input: any) { // without type info
+
+  onKey(input: any) { 
     this.ssnNumber = input;
     if(input == ""){
       this.ssnEntered = "hidden";
@@ -33,9 +39,14 @@ export class HomeComponent implements OnInit {
   handleClick(event: any) { 
     console.log(this.ssnNumber);
     this.ssnEntered = "inherit";
-    this.getDocument();
+    //uncomment to download pdf
+    //this.getDocument();
+    //method to view pdf
+    this.viewPdf();
+    
   } 
-
+  
+  //method to download pdf
   public b64toBlob(b64Data: string, contentType: string) {
     contentType = contentType || '';
     let sliceSize = 512;
@@ -59,6 +70,18 @@ export class HomeComponent implements OnInit {
   return blob;
   }
 
+
+  //method to show pdf file
+  viewPdf(){
+    var blob = this.b64toBlob(this.userData.Payload.documents[0].embeddedContent, "application/pdf");
+    let a = document.createElement("a");
+    document.body.appendChild(a);
+    var url = window.URL.createObjectURL(blob);
+    this.src = url;
+  }
+
+
+  //method to download pdf
   getDocument() {
     var blob = this.b64toBlob(this.userData.Payload.documents[0].embeddedContent, "application/pdf");
     let a = document.createElement("a");
@@ -70,5 +93,7 @@ export class HomeComponent implements OnInit {
     window.URL.revokeObjectURL(url);
     a.remove();
   }
+
+  
 
 }

@@ -20,9 +20,26 @@
     <!-- <ng-template mat-tab-label>
       <mat-icon class="example-tab-icon">thumb_up</mat-icon>
       First
-    </ng-template> -->
+    </ng-template>  -->
+    <pdf-viewer
+  [src]="src"
+  [original-size]="true"
+  [render-text]="true"
+  [rotation]="0"
+  [show-all]="true"
+  [fit-to-page]="false"
+  [zoom]="1"
+  [zoom-scale]="'page-width'"
+  [stick-to-page]="true"
+  [external-link-target]="'blank'"
+  [autoresize]="true"
+  [show-borders]="false"
+  class="pdf-viewer"
+></pdf-viewer>
+
+
   </mat-tab>
   <mat-tab label="Details View"> 
 
   </mat-tab>
-</mat-tab-group>
+</mat-tab-group> 

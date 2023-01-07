@@ -41,3 +41,21 @@ p {
     opacity: 1;
     right: 0;
   }
+
+  .pdf-container {
+    display: flex;
+    border: solid 1px blue;
+  }
+  
+  .viewer {
+    position: absolute; 
+    height: 100%;
+    width: 100%;
+  }
+  
+  .pdf-viewer {
+    height: 100vh;
+    width: 80vw;
+    display: block;
+    margin: 0 auto;
+  }
