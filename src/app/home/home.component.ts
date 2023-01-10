@@ -37,13 +37,14 @@ export class HomeComponent implements OnInit {
   }
 
   handleClick(event: any) { 
-    console.log(this.ssnNumber);
-    this.ssnEntered = "inherit";
-    //uncomment to download pdf
-    //this.getDocument();
-    //method to view pdf
-    this.viewPdf();
-    
+    if(this.ssnNumber!=""){
+      console.log(this.ssnNumber);
+      this.ssnEntered = "inherit";
+      //uncomment to download pdf
+      //this.getDocument();
+      //method to view pdf
+      this.viewPdf();
+    }
   } 
   
   //method to download pdf

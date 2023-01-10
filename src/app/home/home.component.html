@@ -1,5 +1,7 @@
 <app-toolbar></app-toolbar>
-<div style="position: fixed; left: 40%; top: 15%;">
+<br/>
+<br/>
+<div style="position: fixed; left: 40%;">
     <mat-form-field  appearance="outline">
         <mat-label>SSN Number</mat-label>
       <input matInput onlyNumber #inputSsn (keyup)="onKey(inputSsn.value)">
@@ -17,29 +19,33 @@
 
 <mat-tab-group tabView [style.visibility]="ssnEntered" >
   <mat-tab label="PDF View">
-    <!-- <ng-template mat-tab-label>
-      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-      First
-    </ng-template>  -->
+    <ng-template mat-tab-label>
+      <mat-icon>description</mat-icon>
+      PDF View
+    </ng-template> 
     <pdf-viewer
   [src]="src"
   [original-size]="true"
   [render-text]="true"
   [rotation]="0"
   [show-all]="true"
-  [fit-to-page]="false"
+  [fit-to-page]="true"
   [zoom]="1"
   [zoom-scale]="'page-width'"
   [stick-to-page]="true"
   [external-link-target]="'blank'"
   [autoresize]="true"
-  [show-borders]="false"
+  [show-borders]="true"
   class="pdf-viewer"
 ></pdf-viewer>
 
 
   </mat-tab>
   <mat-tab label="Details View"> 
+    <ng-template mat-tab-label>
+      <mat-icon>list</mat-icon>
+      Details View
+    </ng-template> 
 
   </mat-tab>
 </mat-tab-group> 
