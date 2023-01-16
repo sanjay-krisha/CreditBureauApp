@@ -1,7 +1,9 @@
 import { Component , OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {CreditReport} from 'src/app/responseModel'
+import {Address, CreditReport, Party} from 'src/app/responseModel'
 import { PdfService } from 'src/app/pdf-service.service';
+import { ApiService } from 'src/app/api.service';
+
 declare const PDFObject: any;
 
 @Component({
@@ -11,20 +13,35 @@ declare const PDFObject: any;
 })
 export class HomeComponent implements OnInit {
   public constructor(private http: HttpClient,
-    private pdfService: PdfService){
+    private pdfService: PdfService, 
+    private api: ApiService){
+      report: CreditReport;
+      
   }
+
   src: string = ''; 
   //variable declarations
   ssnNumber = '';
   ssnEntered = "hidden";
   pdfData : any;
   public userData!: CreditReport;
+  users: any;
+  ofacAlert!: string;
+  fraudIdentityScanAlerts! : string;
+  partyOne = new Party();
+  partyTwo = new Party();
+  partyOneAddress = new Address();
+  partyTwoAddress = new Address();
+
+  
 
   public ngOnInit() : void{
     const url:string ='/assets/data.json';
     this.http.get(url).subscribe((response) => {
       this.userData = Object.assign(new CreditReport,response);
     })
+
+    
   }
 
 
@@ -36,7 +53,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  handleClick(event: any) { 
+  async handleClick(event: any) { 
     if(this.ssnNumber!=""){
       console.log(this.ssnNumber);
       this.ssnEntered = "inherit";
@@ -44,6 +61,12 @@ export class HomeComponent implements OnInit {
       //this.getDocument();
       //method to view pdf
       this.viewPdf();
+
+       
+    (await this.api.PostReport()).subscribe(res =>{
+      this.users = res;
+      console.log(this.users);
+    })
     }
   } 
   
@@ -79,6 +102,7 @@ export class HomeComponent implements OnInit {
     document.body.appendChild(a);
     var url = window.URL.createObjectURL(blob);
     this.src = url;
+    this.getAlerts();
   }
 
 
@@ -95,6 +119,13 @@ export class HomeComponent implements OnInit {
     a.remove();
   }
 
-  
+  getAlerts(){
+    //this.ofacAlert = this.userData.Payload.parties[0].role.borrowerResponseInformation.fraudIdentityScanAlerts[1].description;
+    this.ofacAlert = "testing";
+    this.partyOne = this.userData.Payload.parties[0];
+    this.partyTwo = this.userData.Payload.parties[1];
+    this.partyOneAddress = this.userData.Payload.parties[0].addresses[0];
+    this.partyTwoAddress = this.userData.Payload.parties[1].addresses[0];
+  }
 
 }

@@ -15,8 +15,6 @@
 <br/>
 <br/>
 <br/>
-
-
 <mat-tab-group tabView [style.visibility]="ssnEntered" >
   <mat-tab label="PDF View">
     <ng-template mat-tab-label>
@@ -46,6 +44,63 @@
       <mat-icon>list</mat-icon>
       Details View
     </ng-template> 
-
+    <h2 class="twelve">Party One details</h2>
+    <div style="margin-left: 20%;margin-right: 20%;">
+      <table>
+        <tr>
+          <td>First Name</td>
+          <td>{{partyOne.firstName}}</td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td>{{partyOne.lastName}}  {{partyOne.middleName}}</td>
+          
+        </tr>
+        <tr>
+          <td>Date of Birth</td>
+          <td>{{partyOne.birthDate}}</td>
+          
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td>{{partyOneAddress.firstLine}}, {{partyOneAddress.city}},{{partyOneAddress.stateCode}}, {{partyOneAddress.postalCode}}
+          </td>
+          
+        </tr>
+      </table>
+    </div>
+      <br/>
+      <br/>
+      <br/>
+      <h2>Party Two details</h2>
+      <div  style="margin-left: 20%;margin-right: 20%;">
+        <table>
+          <tr>
+            <td>First Name</td>
+            <td>{{partyTwo.firstName}}</td>
+            
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <td>{{partyTwo.lastName}}  {{partyTwo.middleName}}</td>
+            
+          </tr>
+          <tr>
+            <td>Date of Birth</td>
+            <td>{{partyTwo.birthDate}}</td>
+            
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>{{partyTwoAddress.firstLine}}, {{partyTwoAddress.city}},{{partyTwoAddress.stateCode}}, {{partyTwoAddress.postalCode}}
+            </td>
+            
+          </tr>
+        </table>
+      </div>
+    
+    
+    <label> OFAC ALERTS</label>
+    
   </mat-tab>
 </mat-tab-group> 

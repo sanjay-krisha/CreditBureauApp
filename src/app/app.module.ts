@@ -16,6 +16,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { OnlyNumberDirective } from './only-number.directive';
 import {HttpClientModule } from '@angular/common/http';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ApiService } from 'src/app/api.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     HttpClientModule,
     PdfViewerModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
