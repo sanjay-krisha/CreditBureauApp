@@ -17,13 +17,15 @@ import { OnlyNumberDirective } from './only-number.directive';
 import {HttpClientModule } from '@angular/common/http';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ApiService } from 'src/app/api.service';
+import { ConfigurationComponent } from './configuration/configuration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ToolbarComponent,
-    OnlyNumberDirective
+    OnlyNumberDirective,
+    ConfigurationComponent
   ],
   imports: [
     BrowserModule,
