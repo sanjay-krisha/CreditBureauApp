@@ -1,48 +1,31 @@
-<div style="position: fixed; left: 40%;">
-<header>Configuration Portal</header>
-<!-- <mat-form-field  appearance="outline"> -->
-<table>
-    <tr>
-      <td>      
-            <mat-label>Service URL</mat-label>
-        </td>
-      <td>
-        <input
-          mdbInput
-          type="text"
-          id="serviceurl"
-          class="form-control form-control-lg"
-        />
-      </td>
-    </tr>
-    <tr>
-      <td>Application Name</td>
-      <td>
-        <select #selectpicker class="form-control form-control-lg">
-          <option>abc</option>
-          <option>cdr</option>
-          <option>hjj</option>
-          <option>hjghj</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendor</td>
-      <td>
-        <select #selectpicker class="form-control form-control-lg">
-          <option>Vendor 1</option>
-          <option>Vendor 2</option>
-          <option>Vendor 3</option>
-          <option>Vendor 4</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <button>Save</button>
-  
-    </tr>
-  </table>
-<!-- </mat-form-field> -->
-</div>
+<app-toolbar>
+</app-toolbar>
+<div style="text-align: center; margin-top: 8%;">
+  <mat-form-field  appearance="outline"  >
+    <mat-label>Service URL</mat-label>
+  <input required name="newItem" #newItem matInput id="newItem">
+</mat-form-field>
+  <form>
 
-  
+    <mat-form-field appearance="fill">
+
+      <mat-label>Application</mat-label>
+      <mat-select [(ngModel)]="selectedApplication" name="app">
+        <mat-option style=" background-color: lightcyan; font-size: 15px;" *ngFor="let app of apps" [value]="app.value">
+          {{app.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p> Selected Application: {{selectedApplication}} </p>
+    <mat-form-field appearance="fill">
+      <mat-label>Vendor</mat-label>
+      <mat-select [(ngModel)]="selectedVendor" name="vendor">
+        <mat-option style="background-color: lightskyblue; font-size: 15px;" *ngFor="let vendor of vendors" [value]="vendor.value">
+          {{vendor.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p> Selected Vendor: {{selectedVendor}} </p>
+  </form>
+  <button class="button" style="vertical-align:middle; margin-left: 20px; margin-top: 25px;" ><span>Save </span></button>
+</div>

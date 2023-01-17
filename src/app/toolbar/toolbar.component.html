@@ -1,10 +1,23 @@
-<mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+<mat-toolbar color="primary">
+  <span class="fill-remaining-space">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
-    <span style="position: fixed; left: 5%;">CREDIT BUREAU</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-</mat-toolbar> 
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item>
+        <mat-icon>home</mat-icon>
+        <a routerLink="/home">Home</a>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>people_outline</mat-icon>
+        <a routerLink="/config">Configuration</a>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>build</mat-icon>
+        <a routerLink="/admin">Admin Portal</a>
+      </button>
+     
+    </mat-menu>
+  </span>
+  <span class="fill-remaining-space">CREDIT BUREAU</span>
+</mat-toolbar>

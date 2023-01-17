@@ -20,7 +20,6 @@ export class CreditReport {
     public partyType!: string
     public firstName!: string
     public lastName!: string
-    public middleName!: string
     public birthDate!: string
     public socialSecurityIdentifier!: string
     public addresses!: Address[]

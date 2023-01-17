@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Address, CreditReport, Party} from 'src/app/responseModel'
 import { PdfService } from 'src/app/pdf-service.service';
 import { ApiService } from 'src/app/api.service';
+import { CreditReportTwo } from '../responseModelTwo';
+import * as JsonData from '../assets/dataEquifax.json';
 
 declare const PDFObject: any;
 
@@ -20,11 +22,13 @@ export class HomeComponent implements OnInit {
   }
 
   src: string = ''; 
+  alerts: string[] = [];
   //variable declarations
   ssnNumber = '';
   ssnEntered = "hidden";
   pdfData : any;
   public userData!: CreditReport;
+  public userDataTwo! : CreditReportTwo;
   users: any;
   ofacAlert!: string;
   fraudIdentityScanAlerts! : string;
@@ -36,11 +40,7 @@ export class HomeComponent implements OnInit {
   
 
   public ngOnInit() : void{
-    const url:string ='/assets/data.json';
-    this.http.get(url).subscribe((response) => {
-      this.userData = Object.assign(new CreditReport,response);
-    })
-
+    
     
   }
 
@@ -53,25 +53,24 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  async handleClick(event: any) { 
+  public handleClick(event: any) { 
     if(this.ssnNumber!=""){
       console.log(this.ssnNumber);
       this.ssnEntered = "inherit";
-      //uncomment to download pdf
-      //this.getDocument();
-      //method to view pdf
       this.viewPdf();
 
        
-    (await this.api.PostReport()).subscribe(res =>{
-      this.users = res;
-      console.log(this.users);
-    })
+    // (await this.api.PostReport()).subscribe(res =>{
+    //   this.users = res;
+    //   this.userDataTwo = Object.assign(new CreditReportTwo,response);
+    //   console.log(this.users);
+    // })
     }
   } 
   
   //method to download pdf
   public b64toBlob(b64Data: string, contentType: string) {
+    //let userDataTwo = JsonData;
     contentType = contentType || '';
     let sliceSize = 512;
   
@@ -97,7 +96,9 @@ export class HomeComponent implements OnInit {
 
   //method to show pdf file
   viewPdf(){
-    var blob = this.b64toBlob(this.userData.Payload.documents[0].embeddedContent, "application/pdf");
+    let userDataTwo = JsonData;
+    //var blob = this.b64toBlob(this.userData.Payload.documents[0].embeddedContent, "application/pdf");
+    var blob = this.b64toBlob(userDataTwo.Payload.documents[0].embeddedContent, "application/pdf");
     let a = document.createElement("a");
     document.body.appendChild(a);
     var url = window.URL.createObjectURL(blob);
@@ -108,7 +109,8 @@ export class HomeComponent implements OnInit {
 
   //method to download pdf
   getDocument() {
-    var blob = this.b64toBlob(this.userData.Payload.documents[0].embeddedContent, "application/pdf");
+    //var blob = this.b64toBlob(this.userData.Payload.documents[0].embeddedContent, "application/pdf");
+    var blob = this.b64toBlob(this.userDataTwo.Payload.documents[0].embeddedContent, "application/pdf");
     let a = document.createElement("a");
     document.body.appendChild(a);
     var url = window.URL.createObjectURL(blob);
@@ -120,12 +122,20 @@ export class HomeComponent implements OnInit {
   }
 
   getAlerts(){
+    let userDataTwo = JsonData;
     //this.ofacAlert = this.userData.Payload.parties[0].role.borrowerResponseInformation.fraudIdentityScanAlerts[1].description;
     this.ofacAlert = "testing";
-    this.partyOne = this.userData.Payload.parties[0];
-    this.partyTwo = this.userData.Payload.parties[1];
-    this.partyOneAddress = this.userData.Payload.parties[0].addresses[0];
-    this.partyTwoAddress = this.userData.Payload.parties[1].addresses[0];
+    // this.partyOne = this.userData.Payload.parties[0];
+    // this.partyTwo = this.userData.Payload.parties[1];
+    // this.partyOneAddress = this.userData.Payload.parties[0].addresses[0];
+    // this.partyTwoAddress = this.userData.Payload.parties[1].addresses[0];
+    this.alerts.push(userDataTwo.Payload.parties[0].role.borrowerResponseInformation.fraudIdentityScanAlerts[0].description);
+    this.alerts.push(userDataTwo.Payload.parties[0].role.borrowerResponseInformation.fraudIdentityScanAlerts[1].description);
+
+    this.partyOne = userDataTwo.Payload.parties[0];
+    this.partyOneAddress = userDataTwo.Payload.parties[0].addresses[0];
+    //this.partyTwo = userDataTwo.Payload.parties[1];
+    //this.partyTwoAddress = userDataTwo.Payload.parties[1].addresses[0];
   }
 
 }

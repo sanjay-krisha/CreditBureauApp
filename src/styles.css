@@ -12,4 +12,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border: 10px solid rgba(0, 0, 0, 0.2);
     margin: 0;
   }
+  .mat-select-content{
+    width:2000px !important;
+    background-color: red !important;
+    font-size: 10px !important;
+  } 
   

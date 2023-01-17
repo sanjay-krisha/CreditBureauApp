@@ -1,4 +1,6 @@
-<app-toolbar></app-toolbar>
+<app-toolbar>
+  
+</app-toolbar>
 <br/>
 <br/>
 <div style="position: fixed; left: 40%;">
@@ -44,7 +46,7 @@
       <mat-icon>list</mat-icon>
       Details View
     </ng-template> 
-    <h2 class="twelve">Party One details</h2>
+    <h2 style="color: rebeccapurple;">Party One details</h2>
     <div style="margin-left: 20%;margin-right: 20%;">
       <table>
         <tr>
@@ -53,7 +55,7 @@
         </tr>
         <tr>
           <td>Last Name</td>
-          <td>{{partyOne.lastName}}  {{partyOne.middleName}}</td>
+          <td>{{partyOne.lastName}}</td>
           
         </tr>
         <tr>
@@ -72,7 +74,7 @@
       <br/>
       <br/>
       <br/>
-      <h2>Party Two details</h2>
+      <!-- <h2>Party Two details</h2>
       <div  style="margin-left: 20%;margin-right: 20%;">
         <table>
           <tr>
@@ -82,7 +84,7 @@
           </tr>
           <tr>
             <td>Last Name</td>
-            <td>{{partyTwo.lastName}}  {{partyTwo.middleName}}</td>
+            <td>{{partyTwo.lastName}}</td>
             
           </tr>
           <tr>
@@ -97,10 +99,13 @@
             
           </tr>
         </table>
-      </div>
+      </div> -->
     
     
-    <label> OFAC ALERTS</label>
+    <h2 style="color: rebeccapurple;"> OFAC ALERTS</h2>
+    <ol *ngFor="let alert of alerts; let i = index">
+      <li><span  class="form-control">{{alert}}</span></li> 
+    </ol>
     
   </mat-tab>
 </mat-tab-group> 

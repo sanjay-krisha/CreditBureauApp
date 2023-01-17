@@ -18,6 +18,10 @@ import {HttpClientModule } from '@angular/common/http';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ApiService } from 'src/app/api.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { AdminComponent } from './admin/admin.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,8 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     HomeComponent,
     ToolbarComponent,
     OnlyNumberDirective,
-    ConfigurationComponent
+    ConfigurationComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,10 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     MatInputModule,
     MatTabsModule,
     HttpClientModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatMenuModule,
+    MatSelectModule,
+    FormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

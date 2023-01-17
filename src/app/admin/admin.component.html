@@ -1,0 +1,62 @@
+<app-toolbar>
+</app-toolbar>
+<html>
+<body>
+<div  style="border:3px solid green; margin-top: 5%;">
+    <div align="center" style="margin-top:2%">
+        <mat-form-field  appearance="outline"  >
+            <mat-label>Application Name</mat-label>
+          <input required name="newItem" #newItem matInput id="newItem">
+        </mat-form-field>
+        <button class="button" style="vertical-align:middle; margin-left: 20px; margin-top: 25px;" (click)="addItems(newItem.value)"><span>Enter </span></button>
+    </div>
+    <div style="margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 3%;">
+      <table id="NormalTable">
+        <thead>
+          <tr>
+            <th>Application</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index">
+            <td><span  class="form-control">{{item}}</span></td> 
+            <td><button class="button"  (click)="removeItem(i)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+</div>
+
+
+<!-- Vendor Details -->
+
+<div  style="border:3px solid red; margin-top: 5%;">
+    <div align="center" style="margin-top:2%">
+        <mat-form-field  appearance="outline"  >
+            <mat-label>Vendor Name</mat-label>
+          <input required name="newItemVendor" #newItemVendor matInput id="newItemVendor">
+        </mat-form-field>
+        <button class="button" style="vertical-align:middle; margin-left: 20px; margin-top: 25px;" (click)="addItemsVendor(newItemVendor.value)"><span>Enter </span></button>
+    </div>
+    <div style="margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 3%;">
+      <table>
+        <thead>
+          <tr>
+            <th>Vendor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let itemvendor of itemsVendor; let i = index">
+            <td><span  class="form-control">{{itemvendor}}</span></td> 
+            <td><button type="button" class="button"  (click)="removeItemVendor(i)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+</div>
+</body>
+</html>
+
+
