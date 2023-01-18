@@ -58,7 +58,7 @@ export class CreditReport {
   
   export class FraudIdentityScanAlert {
     public code!: string
-    public description! : string 
+    
   }
   
   export class OfacAlert {

@@ -20,12 +20,12 @@ export class ApiService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'X-Total-Lending-Vendor-Integration-Client-Application-Name': 'CreditQuest',
-      'ConsumerVendorId': 'TransUnionConsumer'});
-      headers.append('Access-Control-Allow-Origin', '*');
-      headers.append('Access-Control-Allow-Credentials', 'true');
-      headers.append("Access-Control-Allow-Headers", '*');
-      headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-      headers.append('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH');
+      });
+      // headers.append('Access-Control-Allow-Origin', '*');
+      // headers.append('Access-Control-Allow-Credentials', 'true');
+      // headers.append("Access-Control-Allow-Headers", '*');
+      // headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+      // headers.append('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH');
     let options = { headers: headers };
     let reqData = new RequestModel();
     //let arr = JSON.stringify(reqData);
